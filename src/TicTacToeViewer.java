@@ -47,11 +47,11 @@ public class TicTacToeViewer extends JFrame
         {
             if (game.checkTie() == true)
             {
-                g.drawString("It's a tie", 350, 500);
+                g.drawString("It's a tie", 350, 650);
             }
             else
             {
-                g.drawString(game.getWinner() + " wins!", 350, 500);
+                g.drawString(game.getWinner() + " wins!", 350, 650);
             }
         }
 
