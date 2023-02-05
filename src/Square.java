@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * A class written to support the TicTacToe Game.
  *
@@ -16,19 +19,25 @@ public class Square {
     private int row;
     private int col;
     private boolean isWinningSquare;
+//    private Image x;
+//    private Image o;
 
+    private TicTacToeViewer game;
     /**
      * Constructor to initialize one Square of the
      * TicTacToe board
      * @param row the row the square is in
      * @param col the column the square is in
      */
-    public Square(int row, int col) {
+    public Square(int row, int col, TicTacToeViewer game)
+    {
+        this.game = game;
         this.row = row;
         this.col = col;
-
         this.marker = TicTacToe.BLANK;
         this.isWinningSquare = false;
+//        Image x = new ImageIcon("Resources/X.png").getImage();
+//        Image o = new ImageIcon("Resources/O.png").getImage();
     }
 
     /******************** Getters and Setters ********************/
@@ -50,6 +59,37 @@ public class Square {
      */
     public boolean isEmpty() {
         return this.marker.equals(TicTacToe.BLANK);
+    }
+
+    public void draw(Graphics g)
+    {
+        int a = 150;
+        if (this.isWinningSquare)
+        {
+            g.setColor(Color.GREEN);
+            g.fillRect(a*(row+1), a*(col+1), a, a);
+            g.setColor(Color.BLACK);
+        }
+        else
+        {
+            g.drawRect(a*(row+1), a*(col+1), a, a);
+        }
+
+        if (marker.equals(TicTacToe.O_MARKER))
+        {
+            g.drawImage(game.oImg, a*(row+1), a*(col+1), 100, 100, game);
+        }
+        else if (marker.equals(TicTacToe.X_MARKER))
+        {
+            g.drawImage(game.xImg, a*(row+1), a*(col+1), 100, 100, game);
+        }
+
+
+//        g.drawImage(x, a*(row+1), a*(col+1), game);
+//        g.drawImage(o, a*(row+1), a*(col+1), game);
+//        g.drawRect(a*(row+1), a*(col+1), a, a);
+
+
     }
 
     /**
