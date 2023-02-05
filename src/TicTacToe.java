@@ -10,6 +10,7 @@
  * @version: Jan 2023
  */
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class TicTacToe
@@ -287,7 +288,7 @@ public class TicTacToe
             row++;
             System.out.println();
         }
-        x.repaint();
+        //x.repaint();
     }
 
     public static void main(String[] args) {

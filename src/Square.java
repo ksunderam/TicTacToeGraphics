@@ -19,9 +19,6 @@ public class Square {
     private int row;
     private int col;
     private boolean isWinningSquare;
-//    private Image x;
-//    private Image o;
-
     private TicTacToeViewer game;
     /**
      * Constructor to initialize one Square of the
@@ -31,6 +28,7 @@ public class Square {
      */
     public Square(int row, int col, TicTacToeViewer game)
     {
+        //passing in game object to access board in draw
         this.game = game;
         this.row = row;
         this.col = col;
@@ -64,24 +62,26 @@ public class Square {
     public void draw(Graphics g)
     {
         int a = 150;
+        //checks whether or not to highlight the winning squares green
         if (this.isWinningSquare)
         {
             g.setColor(Color.GREEN);
             g.fillRect(a*(row+1), a*(col+1), a, a);
             g.setColor(Color.BLACK);
         }
+        //otherwise it just draws a regular square, without filling it green
         else
         {
             g.drawRect(a*(row+1), a*(col+1), a, a);
         }
-
+        //if the square has an o or x, then the window will match it
         if (marker.equals(TicTacToe.O_MARKER))
         {
-            g.drawImage(game.oImg, a*(row+1), a*(col+1), 100, 100, game);
+            g.drawImage(game.oImg, a*(col+1), a*(row+1), 150, 150, game);
         }
         else if (marker.equals(TicTacToe.X_MARKER))
         {
-            g.drawImage(game.xImg, a*(row+1), a*(col+1), 100, 100, game);
+            g.drawImage(game.xImg, a*(col+1), a*(row+1), 150, 150, game);
         }
 
 
